@@ -1,19 +1,13 @@
 import {
   LayoutDashboard,
-  Kanban,
   Users,
-  AlertCircle,
-  Bell,
   Target,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/" },
-  { icon: Kanban, label: "Kanban Board", href: "/board" },
-  { icon: AlertCircle, label: "Issues", href: "/issues" },
   { icon: Users, label: "People", href: "/people" },
-  { icon: Bell, label: "Notifications", href: "/notifications" },
 ]
 
 const currentSprint = {

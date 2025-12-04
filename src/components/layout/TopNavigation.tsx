@@ -93,22 +93,7 @@ export default function TopNavigation({ onToggleSidebar }: TopNavigationProps) {
         </div>
 
         {/* RIGHT SIDE BUTTONS */}
-        <div className="flex items-center space-x-2 md:space-x-3">
-
-          {/* CREATE DROPDOWN */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white hidden md:flex">
-                <Plus className="h-4 w-4 mr-2" />
-                Create
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem><Bug className="h-4 w-4 mr-2" /> New Issue</DropdownMenuItem>
-              <DropdownMenuItem><FolderPlus className="h-4 w-4 mr-2" /> New Project</DropdownMenuItem>
-              <DropdownMenuItem><Users className="h-4 w-4 mr-2" /> New Team</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+        <div className="flex items-center space-x-5">
 
           {/* THEME SWITCHER */}
           <DropdownMenu>
