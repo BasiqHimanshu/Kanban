@@ -4,6 +4,7 @@ import {
   Target,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Link, useLocation } from "react-router-dom"
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/" },
@@ -24,15 +25,8 @@ interface LeftSidebarProps {
 }
 
 export default function LeftSidebar( { isCollapsed }: LeftSidebarProps) {
-  // Replace this with router state later if needed
-  const currentPath = "/" // Mock selected path
-
-  const getEncouragingMessage = (daysRemaining: number) => {
-    if (daysRemaining > 7) return "Great pace! 🚀"
-    if (daysRemaining > 3) return "Keep it up! 💪"
-    if (daysRemaining > 1) return "Final push! ⚡"
-    return "Last day! 🎯"
-  }
+  const location = useLocation()
+  const currentPath = location.pathname
 
   return (
     <aside
@@ -48,8 +42,9 @@ export default function LeftSidebar( { isCollapsed }: LeftSidebarProps) {
             const isActive = currentPath === item.href
 
             return (
-              <button
+              <Link
                 key={item.href}
+                to={item.href}
                 className={cn(
                   "w-full flex items-center p-2 rounded-lg transition-all",
                   isCollapsed
@@ -73,7 +68,7 @@ export default function LeftSidebar( { isCollapsed }: LeftSidebarProps) {
                 </div>
 
                 {!isCollapsed && <span className="font-medium">{item.label}</span>}
-              </button>
+              </Link>
 
             )
           })}

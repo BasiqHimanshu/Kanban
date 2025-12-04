@@ -1,21 +1,21 @@
 import { create } from "zustand"
+import { persist } from "zustand/middleware"
 
 interface AuthState {
-  isLoggedIn: boolean
+  token: string | null
   login: (token: string) => void
   logout: () => void
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
-  isLoggedIn: !!localStorage.getItem("authToken"),
-
-  login: (token) => {
-    localStorage.setItem("authToken", token)
-    set({ isLoggedIn: true })
-  },
-
-  logout: () => {
-    localStorage.removeItem("authToken")
-    set({ isLoggedIn: false })
-  }
-}))
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
+      token: null,
+      login: (token) => set({ token }),
+      logout: () => set({ token: null }),
+    }),
+    {
+      name: "auth-storage", // unique name for local storage
+    }
+  )
+)
