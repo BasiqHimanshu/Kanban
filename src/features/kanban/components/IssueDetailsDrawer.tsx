@@ -49,8 +49,19 @@ export const IssueDetailsDrawer: React.FC<Props> = ({
   }
 
   return (
-    <Drawer open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DrawerContent className="w-[450px] max-w-[90vw] h-[90vh] overflow-y-auto">
+    <Drawer open={open} onOpenChange={(isOpen) => !isOpen && onClose()} >
+      <DrawerContent
+        className="
+          fixed bottom-0 right-0 
+          translate-x-0 !left-auto
+          w-[450px] max-w-full h-auto
+          rounded-t-lg shadow-xl border
+          data-[state=open]:animate-in data-[state=open]:fade-in-90
+          data-[state=open]:animate-slide-up data-[state=closed]:animate-out
+        "
+      >
+
+
         <DrawerHeader>
           <DrawerTitle>Issue Details</DrawerTitle>
         </DrawerHeader>
